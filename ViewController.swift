@@ -9,8 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var tableView: UITableView!
-    var pokemonList: [PokData] = [] 
+    var tableView = UITableView()
+    var pokemonList: [PokData] = []
     
     
     override func viewDidLoad() {
@@ -18,28 +18,28 @@ class ViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        
-        let anonymousFunction = {(pokeList: [PokemonList]) in
+//        tableView.register(UITableVi, forCellReuseIdentifier: <#T##String#>)
+/*        let anonymousFunction = {(pokeList: [PokemonList]) in
             self.next = pokeList
             self.reloadData
             
         }
+  */
+        NetworkManager.shared.getData()
         
-        NetworkManager.shared.getData(completed: anonymousFunction)
         
-        
-    
     }
     
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pokemonCell", for: indexPath)
+        return cell
     }
     
 }
