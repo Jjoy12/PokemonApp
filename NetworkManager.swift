@@ -11,13 +11,6 @@ class NetworkManager {
     static let shared = NetworkManager()
     let baseURL = "https://pokeapi.co/api/v2/pokemon/"
     
-    struct PokData: Codable{
-        var count: Int
-        var next: String
-    }
-    
-    var count = 0
-    
     public init(){}
     
     func getData(completed: @escaping ([PokData]?, ErrorHandl?) -> Void){
